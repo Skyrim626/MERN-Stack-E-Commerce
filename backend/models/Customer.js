@@ -17,7 +17,7 @@ const CustomerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  tel_no: {
+  telNo: {
     type: String,
     required: true
   },
