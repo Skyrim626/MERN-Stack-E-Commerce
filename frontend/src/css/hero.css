@@ -1,0 +1,41 @@
+
+.hero-container {
+  background-color: rgb(231, 187, 187);
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.carousel-item  {
+  position: relative;
+}
+
+.hero-carousel-content {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-carousel-content__title {
+  font-weight: var(--fw-700);
+  font-size: 2.5rem;
+  color: orangered;
+}
+
+.hero-carousel-content__body span {
+  color: orangered;
+  font-weight: var(--fw-600);
+}
+
+.hero-carousel-content .btn {
+  color: white;
+  font-weight: var(--fw-500);
+  transition: 500ms;
+}
+
+.hero-carousel-content .btn:hover {
+  color: black;
+  background-color: white;
+}
