@@ -86,9 +86,9 @@ function NavigationBar() {
           <Link to="/login">
             <a href="#" className="btn__login | btn btn-dark me-1">Login</a>
           </Link>
-          <Link to="/signup">
+          {/* <Link to="/signup">
             <a href="#" className="btn__signUp | btn btn-dark">Sign Up</a>
-          </Link>
+          </Link> */}
           <button
             className="navbar-toggler"
             type="button"

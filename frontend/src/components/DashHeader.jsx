@@ -78,9 +78,9 @@ export default function DashHeader() {
             </a>
           </Link>
           <Link>
-            <button className="btn icon-button text-dark" title="Logout" onClick={sendLogout}>
+            <a className="text-dark" title="Logout" onClick={sendLogout}>
               <FontAwesomeIcon icon={faRightFromBracket} />
-            </button>
+            </a>
           </Link>
         </div>
 

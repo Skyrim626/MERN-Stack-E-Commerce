@@ -10,7 +10,7 @@ export default function Product({ productId }) {
   const navigate = useNavigate();
 
   if (product) {
-    const handleInfo = () => navigate(`/dash/products/${productId}`); // Links to the created resource
+    /* const handleInfo = () => navigate(`/dash/products/${productId}`); */ // Links to the created resource
 
     return (
       <>

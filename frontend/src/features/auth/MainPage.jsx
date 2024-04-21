@@ -15,7 +15,11 @@ export default function MainPage() {
       <section className='p-5'>
         <div className="container pt-5">
           <CategorySection />
-          <ProductstList />
+          
+        
+            <ProductstList />
+        
+
         </div>
       </section>
       {/* <CustomerList /> */}

@@ -31,11 +31,14 @@ export default function ProductstList() {
 
     return (
     
-      <div className="row row-cols-md-3 row-cols-1 row-cols-sm-2 g-5">
+      <section className="container">
+        <h1 className="text-center mb-5">Products</h1>
+        <div className="row row-cols-md-3 row-cols-1 row-cols-sm-2 g-5">
         
         {tableContent}
   
-      </div>
+        </div>
+      </section>
   
     )
 
