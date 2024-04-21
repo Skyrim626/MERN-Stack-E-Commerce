@@ -1,0 +1,12 @@
+section {
+  min-height: 100vh;
+}
+
+
+/* Hero Section */
+
+.hero-container {
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+  overflow: hidden;
+}

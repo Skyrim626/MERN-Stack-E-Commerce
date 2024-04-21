@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const categoriesController = require("../controllers/categoryController");
 
+const verifyJWT = require("../middleware/verifyJWT");
+
+router.use(verifyJWT);
 
 router.route('/')
   .get(categoriesController.getAllCategories)

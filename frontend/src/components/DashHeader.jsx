@@ -1,9 +1,42 @@
 import React, { useState, useEffect } from "react";
 import "../css/navigationBar.css";
 import logo from "../assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
+import CartsList from "../features/carts/CartsList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+
+import { useSendLogoutMutation } from "../features/auth/authApiSlice";
+
+const DASH_REGEX = /^\/dash(\/)?$/;
+const PRODUCTS_REGEX = /^\/dash\/products(\/)?$/;
+const CUSTOMERS_REGEX = /^\/dash\/customers(\/)?$/;
 
 export default function DashHeader() {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const [sendLogout, { isLoading, isSuccess, isError, error }] =
+    useSendLogoutMutation();
+
+  useEffect(() => {
+    if (isSuccess) navigate("/");
+  }, [isSuccess, navigate]);
+
+  if (isLoading) return <p>Logging Out...</p>;
+
+  if (isError) return <p>Error: {error.data?.message}</p>;
+
+  let dashClass = null;
+  if (
+    !DASH_REGEX.test(pathname) &&
+    !PRODUCTS_REGEX.test(pathname) &&
+    !CUSTOMERS_REGEX.test(pathname)
+  ) {
+    dashClass = "dash-header__container--small";
+  }
+
+  // Scroll Bar Purposes
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -23,14 +56,13 @@ export default function DashHeader() {
       className={`navbar fixed-top p-2 ${scrolled ? "scrolled" : "bg-light"}`}
     >
       <div className="container-fluid">
-          <Link to="/dash">
-            <a className="logo-container | navbar-brand me-auto" href="#">
-              <img src={logo} alt="" />
-            </a>
-          </Link>
+        <Link to="/dash">
+          <a className="logo-container | navbar-brand me-auto" href="#">
+            <img src={logo} alt="" />
+          </a>
+        </Link>
 
         <div className="left-navigation mw-auto">
-          
           <button
             className="navbar-toggler me-3"
             type="button"
@@ -41,14 +73,19 @@ export default function DashHeader() {
             <i className="fa-solid fa-cart-shopping"></i>
           </button>
           <Link to="/">
-            <a href="#" className="text-dark">
+            <a href="#" className="text-dark me-3">
               <i className="fa-solid fa-circle-user"></i>
             </a>
+          </Link>
+          <Link>
+            <button className="btn icon-button text-dark" title="Logout" onClick={sendLogout}>
+              <FontAwesomeIcon icon={faRightFromBracket} />
+            </button>
           </Link>
         </div>
 
         <div
-          className="offcanvas offcanvas-end"
+          className="offcanvas offcanvas-end w-auto"
           tabIndex="-1"
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
@@ -64,50 +101,34 @@ export default function DashHeader() {
               aria-label="Close"
             ></button>
           </div>
-          <div className="offcanvas-body">
-            <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          <div className="offcanvas-body d-flex justify-content-between flex-column">
+            <CartsList />
+
+            {/* <table className="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">#</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dress Shirt</td>
+                  <td>Women</td>
+                  <td>5</td>
+                  <td className="d-flex justify-content-between gap-2">
+                    <button className="btn btn-danger">Remove</button>
+                    <button className="btn btn-primary">Add</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table> */}
+
+            <Link to="checkout">
+              <button className="btn btn-dark w-100 btn-lg">Checkout</button>
+            </Link>
           </div>
         </div>
       </div>

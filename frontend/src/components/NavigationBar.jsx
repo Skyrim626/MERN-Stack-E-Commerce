@@ -58,20 +58,26 @@ function NavigationBar() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link mx-lg-2" href="#">
+                  <a className="nav-link mx-lg-2" href="#categories">
                     Category
                   </a>
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link mx-lg-2" href="#">
+                  <a className="nav-link mx-lg-2" href="#most-rated">
+                    Most Rated
+                  </a>
+                </li>
+
+                <li className="nav-item">
+                  <a className="nav-link mx-lg-2" href="#products">
                     Products
                   </a>
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link mx-lg-2" href="#">
-                    News
+                  <a className="nav-link mx-lg-2" href="#discount">
+                    Discount
                   </a>
                 </li>
               </ul>

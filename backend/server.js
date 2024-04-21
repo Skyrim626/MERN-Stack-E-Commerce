@@ -46,9 +46,11 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 /****************** */
 /** Routing Section */
 app.use('/', require('./routes/root'));
+app.use('/auth', require('./routes/authRoutes'));
 app.use('/customers', require('./routes/customerRoutes'));
 app.use('/products', require('./routes/productRoutes'));
 app.use('/categories', require('./routes/categoryRoutes'));
+app.use('/carts', require('./routes/cartRoutes'));
 /****************** */
 /****************** */
 /****************** */

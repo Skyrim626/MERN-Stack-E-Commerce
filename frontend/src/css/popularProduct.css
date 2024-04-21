@@ -1,0 +1,16 @@
+/* .popular-product-container {
+  min-height: 60vh;
+}
+ */
+.popular-product__image-container {
+  width: 100%;
+  height: 50vh;
+  background-color: brown;
+}
+
+.popular-product__image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

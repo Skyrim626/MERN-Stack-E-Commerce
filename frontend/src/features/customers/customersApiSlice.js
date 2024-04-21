@@ -17,7 +17,7 @@ export const customersApiSlice = apiSlice.injectEndpoints({
           },
           keepUnusedDataFor: 60,  
           transformResponse: responseData => {
-            /* console.log("responseData:", responseData); */ // Testing Purposes
+            console.log("responseData:", responseData); // Testing Purposes
               const loadedCustomers = responseData.map(customer => {
                   customer.id = customer._id
                   return customer
@@ -33,11 +33,48 @@ export const customersApiSlice = apiSlice.injectEndpoints({
               } else return [{ type: 'Customer', id: 'LIST' }]
           }
       }),
+      addNewCustomer: builder.mutation({
+        query: initialCustomerData => ({
+          url: '/customers',
+          method: 'POST',
+          body: {
+            ...initialCustomerData,
+          }
+        }),
+        invalidatesTags: [
+          { type: 'Customer', id: "LIST" }
+        ]
+      }),
+      updateCustomer: builder.mutation({
+        query: initialCustomerData => ({
+          url: '/customers',
+          method: 'PATCH',
+          body: {
+            ...initialCustomerData,
+          }
+        }),
+        invalidatesTags: (result, error, arg) => [
+          { type: 'Customer', id: arg.id }
+        ]
+      }),
+      deleteCustomer: builder.mutation({
+        query: ({ id }) => ({
+          url: '/customers',
+          method: 'DELETE',
+          body: { id }
+        }),
+        invalidatesTags: (result, error, arg) => [
+          { type: 'Customer', id: arg.id }
+        ]
+      }),
   }),
 })
 
 export const {
   useGetCustomersQuery,
+  useAddNewCustomerMutation,
+  useUpdateCustomerMutation,
+  useDeleteCustomerMutation,
 } = customersApiSlice
 
 // returns the query result object

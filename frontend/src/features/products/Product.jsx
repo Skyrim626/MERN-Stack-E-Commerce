@@ -1,14 +1,11 @@
-import React from 'react'
+import React from "react";
 import "../../css/product.css";
 import { useSelector } from "react-redux";
-import { selectProductById } from './productsApiSlice';
+import { selectProductById } from "./productsApiSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function Product({ productId }) {
-
-  const product = useSelector((state) =>
-  selectProductById(state, productId)
-  );
+  const product = useSelector((state) => selectProductById(state, productId));
 
   const navigate = useNavigate();
 
@@ -18,25 +15,23 @@ export default function Product({ productId }) {
     return (
       <>
         <div className="product-container | col">
-        
-          <div className="card">
+          <div className="card p-2">
             <div className="img-container">
-                <img src="" alt="" />
+              <img alt="" src={product.imgSrc} />
+            </div>
+            <div className="card-body">
+              <h5 className="card-title">{product.productName}</h5>
+              <p className="card-text">{product.description}</p>
+              <div className="d-flex justify-content-between">
+                <a className="btn btn-primary" onClick={handleInfo}>
+                  More Info
+                </a>
+                <button className="btn">Add to Cart</button>
               </div>
-              <div className="card-body">
-                <h5 className="card-title">{product.productName}</h5>
-                <p className="card-text">{product.description}</p>
-                <div className="d-flex justify-content-between">
-                  <a className="btn btn-primary" onClick={handleInfo}>More Info</a>
-                  <button className='btn'>Add to Cart</button>
-                </div>
-              </div>
+            </div>
           </div>
-       
         </div>
       </>
-    )
+    );
   }
-   
-
 }

@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import { useGetProductsQuery } from "./productsApiSlice";
-import Product from './Product';
+import PopularProduct from "./PopularProduct";
 
-export default function ProductstList() {
+export default function PopularProductsList() {
 
   const {
     data: products,
@@ -11,7 +11,6 @@ export default function ProductstList() {
     isError,
     error
   } = useGetProductsQuery();
-  
 
   let content;
 
@@ -24,21 +23,20 @@ export default function ProductstList() {
   }
 
   if(isSuccess) {
-    
+
     const { ids } = products;
 
-    const tableContent = ids?.length ? ids.map(productId => <Product key={productId} productId ={productId}/>) : null;
+    const tableContent = ids?.length ? ids.map(productId => <PopularProduct key={productId} productId ={productId}/>) : null;
 
     return (
-    
-      <div className="row row-cols-md-3 row-cols-1 row-cols-sm-2 g-5">
-        
+      <div className="row row-cols-2 g-5 container">
         {tableContent}
-  
       </div>
-  
-    )
+    );
 
   }
 
+  return content;
+
+  
 }

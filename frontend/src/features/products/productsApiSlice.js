@@ -10,10 +10,12 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     getProducts: builder.query({
       query: () => '/products',
       validateStatus: (response, result) => {
+        console.log(responseData);
         return response.status === 200 && !result.isError;
       },
       keepUnusedDataFor: 5,
       transformResponse: responseData => {
+        console.log(responseData);
         const loadedProducts = responseData.map(product => {
           product.id = product._id
           return product

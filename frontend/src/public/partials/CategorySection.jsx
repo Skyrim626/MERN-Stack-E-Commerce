@@ -8,7 +8,7 @@ import ShopCategory from '../../components/ShopCategory';
 export default function CategorySection() {
   return (
     <>
-      <section className='p-4'>
+      <section className='p-4' id='categories'>
         <div className="container text-center mt-4">
           <h1 className='h1 text-dark'>Fusions & Fashions</h1>
 

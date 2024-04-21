@@ -34,7 +34,7 @@ export default function DiscountSection() {
 
 
   return (
-    <div className='discount-section p-5'>
+    <div className='discount-section p-5' id='discount'>
       <div className="row g-5">
         <div className="col col-7">
           <div className="discount-content d-flex flex-column justify-content-evenly h-100">
