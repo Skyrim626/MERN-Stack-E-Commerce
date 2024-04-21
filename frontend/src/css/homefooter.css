@@ -1,0 +1,32 @@
+
+.home-footer {
+  background-color: #241816;
+}
+
+.footer-link-container p:not(:first-child) {
+  color: rgb(137, 130, 130);
+  font-size: 0.9rem;
+}
+
+.footer-link-container  .text-justify {
+  text-align: justify;
+}
+
+.social-media-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-media-group a {
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 100%;
+  font-size: 1.1rem;
+  transition: 200ms;
+}
+
+.social-media-group a:hover {
+  background-color: white;
+  color: black;
+}

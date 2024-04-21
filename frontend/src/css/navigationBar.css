@@ -1,7 +1,8 @@
 
 .navbar {
-  z-index: 9999 !important;
+  z-index: 9999;
   background-color: whitesmoke;
+  transition: background-color 400ms;
 }
 
 .logo-container {
@@ -30,6 +31,15 @@
   outline: none;
 }
 
+.navbar .btn__signUp {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  box-shadow: none;
+}
+
+
+
 .nav-link {
   transition: 500ms;
   position: relative;
@@ -43,6 +53,31 @@
 .nav-link:hover {
   color: black;
 }
+
+.navbar.scrolled {
+  background-color: #1D1D1D;
+}
+
+.navbar.scrolled .btn__signUp {
+  background-color: transparent !important;
+  border: 1px solid white !important;
+}
+
+.navbar.scrolled .btn__signUp:hover {
+  background-color: white !important;
+  color: black;
+}
+
+.navbar.scrolled .btn__login:hover {
+  background-color: white;
+  color: black !important;
+}
+
+.navbar.scrolled .btn, .navbar.scrolled .nav-link, .navbar.scrolled .nav-link.active  {
+  color: white;
+}
+
+
 
 @media (min-width: 991px) {
   
@@ -62,6 +97,10 @@
   .nav-link:hover::before, .nav-link.active::before {
     width: 100%;
     visibility: visible;
+  }
+
+  .navbar.scrolled .nav-link::before {
+    background-color: white;
   }
 
 }

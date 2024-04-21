@@ -1,11 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/images/logo.png";
 import "../css/navigationBar.css";
+import { Link } from 'react-router-dom'
 
 function NavigationBar() {
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg fixed-top p-2">
+      <nav className={`navbar navbar-expand-lg fixed-top p-2 ${scrolled ? 'scrolled' : 'bg-light'}`}>
         <div className="container-fluid">
           <a className="logo-container | navbar-brand me-auto" href="#">
             <img src={logo} alt="" />
@@ -60,8 +77,12 @@ function NavigationBar() {
               </ul>
             </div>
           </div>
-          <a href="#" className="btn btn-dark me-1">Login</a>
-          <a href="#" className="btn btn-outline-dark">Sign Up</a>
+          <Link to="/login">
+            <a href="#" className="btn__login | btn btn-dark me-1">Login</a>
+          </Link>
+          <Link to="/signup">
+            <a href="#" className="btn__signUp | btn btn-dark">Sign Up</a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
