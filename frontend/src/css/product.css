@@ -1,0 +1,21 @@
+
+.product-container .card {
+  height: 70vh;
+  overflow-y: hidden;
+  background-color: transparent;
+  border: 1px solid black;
+}
+
+.product-container .img-container {
+  height: 100vh;
+  background-color: red;
+}
+
+.product-container .card-text {
+  height: 100px;
+  overflow-y: scroll;
+}
+
+.product-container .card-title {
+  color: brown;
+}

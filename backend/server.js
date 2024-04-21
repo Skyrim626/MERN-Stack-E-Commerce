@@ -15,9 +15,9 @@ const { logEvents } = require('./middleware/logger');
 
 /** PORT NUMBER 
  * 
- * If the environment has not declared a specific port number then 3000 will be the default port number
+ * If the environment has not declared a specific port number then 3500 will be the default port number
 */
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3500;
 
 // Test Node Environment
 console.log(process.env.NODE_ENV);
@@ -47,6 +47,8 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 /** Routing Section */
 app.use('/', require('./routes/root'));
 app.use('/customers', require('./routes/customerRoutes'));
+app.use('/products', require('./routes/productRoutes'));
+app.use('/categories', require('./routes/categoryRoutes'));
 /****************** */
 /****************** */
 /****************** */

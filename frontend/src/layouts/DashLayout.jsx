@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
 import DashHeader from '../components/DashHeader';
-import DashFooter from '../components/DashFooter';
+import HomeFooter from '../components/HomeFooter';
 
 export default function DashLayout() {
   return (
@@ -10,7 +10,7 @@ export default function DashLayout() {
         <main className='dash-container'>
           <Outlet />
         </main>
-      <DashFooter />
+      <HomeFooter />
       
     </>
   )

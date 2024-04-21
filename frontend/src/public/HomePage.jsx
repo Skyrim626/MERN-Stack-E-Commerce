@@ -1,7 +1,7 @@
 import React from 'react'
-import NavigationBar from '../components/NavigationBar'
-import Hero from '../components/Hero'
-import Category from '../components/Category'
+import NavigationBar from '../components/NavigationBar';
+import Hero from './partials/Hero'
+import CategorySection from './partials/CategorySection'
 import { Link } from 'react-router-dom';
 import MostRated from '../components/MostRated';
 import HomeFooter from '../components/HomeFooter';
@@ -12,10 +12,9 @@ export default function HomePage() {
     <>
       <NavigationBar />
       <Hero />
-      <Category /> 
+      <CategorySection /> 
       <MostRated />
       <DiscountSection />
-
       <HomeFooter />
     </>
   )
