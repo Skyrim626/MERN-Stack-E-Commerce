@@ -13,6 +13,22 @@ const PRODUCTS_REGEX = /^\/dash\/products(\/)?$/;
 const CUSTOMERS_REGEX = /^\/dash\/customers(\/)?$/;
 
 export default function DashHeader() {
+  // Scroll Bar Purposes
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  /** Navigate */
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -30,26 +46,17 @@ export default function DashHeader() {
   let dashClass = null;
   if (
     !DASH_REGEX.test(pathname) &&
-    !PRODUCTS_REGEX.test(pathname) &&
-    !CUSTOMERS_REGEX.test(pathname)
+    !NOTES_REGEX.test(pathname) &&
+    !USERS_REGEX.test(pathname)
   ) {
     dashClass = "dash-header__container--small";
   }
 
-  // Scroll Bar Purposes
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 0;
-      setScrolled(isScrolled);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const logoutButton = (
+    <a className="text-dark" title="Logout" onClick={sendLogout}>
+      <FontAwesomeIcon icon={faRightFromBracket} />
+    </a>
+  );
 
   return (
     <nav
@@ -77,11 +84,11 @@ export default function DashHeader() {
               <i className="fa-solid fa-circle-user"></i>
             </a>
           </Link>
-          <Link>
-            <a className="text-dark" title="Logout" onClick={sendLogout}>
+
+          {/* <a className="text-dark" title="Logout" onClick={sendLogout}>
               <FontAwesomeIcon icon={faRightFromBracket} />
-            </a>
-          </Link>
+            </a> */}
+          {logoutButton}
         </div>
 
         <div

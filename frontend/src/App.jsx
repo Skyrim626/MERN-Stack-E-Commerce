@@ -20,6 +20,7 @@ function App() {
         <Route path='dash' element={<DashLayout />} >
           
           <Route index element={<MainPage />} />
+          {/* <Route path=':id' element={<MainPage />} />  */}
 
           <Route path='customers'>
             <Route index element={<CustomerList />} />

@@ -23,7 +23,7 @@ export default function Product({ productId }) {
               <h5 className="card-title">{product.productName}</h5>
               <p className="card-text">{product.description}</p>
               <div className="d-flex justify-content-between">
-                <a className="btn btn-primary" onClick={handleInfo}>
+                <a className="btn btn-primary" /* onClick={handleInfo} */>
                   More Info
                 </a>
                 <button className="btn">Add to Cart</button>

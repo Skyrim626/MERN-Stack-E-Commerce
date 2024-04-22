@@ -37,7 +37,10 @@ export default function Login() {
       dispatch(setCredentials({ accessToken }));
       setEmail("");
       setPassword("");
-      navigate("/dash");
+      navigate('/dash');
+
+      /* navigate(`/dash?accessToken=${accessToken}`); */
+      
     } catch (err) {
       if (!err.status) {
         setErrMsg("No Server Response");
